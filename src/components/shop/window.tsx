@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Input from "./input";
-import Button from "./button";
 import ToDo from "./toDo";
 
 type Data = {
@@ -16,25 +15,19 @@ const Window = () => {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState("");
 
-  const handleChange = (value: any) => {
+  const handleChange = (value: string) => {
     setValue(value);
-    console.log(value);
   };
 
-  const handleClick = (clicked: any) => {
+  const handleClick = (clicked: undefined) => {
     setClicked(clicked);
     setCount(count + 1);
-    console.log("click");
     data.push({ id: count, text: value });
-    console.log(data);
   };
 
   return (
     <div className=" bg-[#f0f8ff] w-[40%] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto">
-      <div className="flex gap-[5px]">
-        <Input key="input" onChange={handleChange} />
-        <Button key="button" onClick={handleClick} />
-      </div>
+      <Input key="input" onChange={handleChange} onClick={handleClick} />
       <h1 className="text-center text-slate-700 mb-[20px]">ToBuy</h1>
       <div>
         {clicked &&
