@@ -1,5 +1,9 @@
 # ToDoList
 This app was created to help me to become well versed in hooks, in particular useState hook. In the future I'm going to add new tabs with home chores, interactive calendar and work duties. 
+
+![Запись экрана 2024-01-08 в 22 18 55](https://github.com/AV-Loginova/ToDoList/assets/129111624/b32445df-bb36-4383-9aa3-8d45af7ee721)
+
+
 ## 25.12.2023
 For now APP has a tab with an ability to ad strings in the list. 
 ## 26.12.2023
