@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-// import Edit from "../../assets/edit.png";
 import Delete from "../../assets/bin.png";
 
 type Props = {
   task: {
     id: number;
     task: string;
+    checked: boolean;
   };
   deleteTodo: (id: number) => void;
+  isChecked: any;
 };
 
-const ToDo = ({ task, deleteTodo }: Props) => {
-  const [checked, setChecked] = useState(false);
-  const [click, setClick] = useState(false);
+const ToDo = ({ task, deleteTodo, isChecked }: Props) => {
+  const [checked, setChecked] = useState(task?.checked);
 
   function handleChecked() {
+    isChecked(!checked, task.id);
     setChecked(!checked);
   }
 
@@ -23,9 +24,10 @@ const ToDo = ({ task, deleteTodo }: Props) => {
       <input
         type="checkbox"
         className="form-check-input"
+        checked={task.checked}
         onChange={handleChecked}
       ></input>
-      <p className={checked ? "flex-1 m-0 line-through" : "flex-1 m-0"}>
+      <p className={task.checked ? "flex-1 m-0 line-through" : "flex-1 m-0"}>
         {task.task}
       </p>
       <button className="">
@@ -41,9 +43,3 @@ const ToDo = ({ task, deleteTodo }: Props) => {
 };
 
 export default ToDo;
-
-{
-  /* <button>
-          <img className="w-[20px]" src={Edit} alt="edit"></img>
-        </button> */
-}
