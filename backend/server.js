@@ -1,7 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -27,9 +26,9 @@ app.post("/signup", (req, res) => {
 app.post("/signin", (req, res) => {
   const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
-    let name = data[0].name;
-    let id = data[0].id;
-    let quote = data[0].quote;
+    let name = data[0]?.name;
+    let id = data[0]?.id;
+    let quote = data[0]?.quote;
     if (err) {
       return res.json("Error");
     }

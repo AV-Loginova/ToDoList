@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import * as Icon from "react-bootstrap-icons";
 
 type val = {
   quote: string;
@@ -12,6 +13,7 @@ function Profile() {
     id: localStorage.getItem("id"),
   });
   const [quote, setQuote] = useState(null || localStorage.getItem("quote"));
+  const [click, setClick] = useState(false);
 
   const handleInput = (e: any) => {
     setValue((prev) => ({ ...prev, [e.target.name]: [e.target.value] }));
@@ -28,6 +30,11 @@ function Profile() {
       .catch((err) => {
         console.log(err);
       });
+    setClick(!click);
+  };
+
+  const handleClick = () => {
+    setClick(!click);
   };
 
   return (
@@ -35,12 +42,30 @@ function Profile() {
       <h1 className="text-center">Profile</h1>
       <div className="flex"></div>
       <p className="text-[35px]">{localStorage.getItem("name")}</p>
-      <label htmlFor="quote">Quote:</label>
-      <p className="italic">
-        {quote === "null" ? "Your inspiring quote..." : quote}
-      </p>
-      <input name="quote" id="quote" type="text" onChange={handleInput}></input>
-      <button onClick={handleSubmit}>Edit</button>
+      <div className="flex">
+        <p className="italic">
+          {quote === "null" || quote === "" ? "Your inspiring quote..." : quote}
+        </p>
+        <button className="mt-[-20px]" onClick={handleClick}>
+          <Icon.PenFill
+            size={15}
+            color={"grey"}
+            className="hover:fill-[black]"
+          />
+        </button>
+      </div>
+      <div className={`flex gap-[1px] ${!click && "hidden"}`}>
+        <input
+          name="quote"
+          id="quote"
+          type="text"
+          onChange={handleInput}
+          className="p-[6px] border-1 rounded-[5px]"
+        ></input>
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          Edit
+        </button>
+      </div>
     </div>
   );
 }
