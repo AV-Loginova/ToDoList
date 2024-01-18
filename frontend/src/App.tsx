@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Window from "./components/shop/window";
 import SignUp from "./components/signUp/SignUp";
 import SignIn from "./components/signIn/SignIn";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import Profile from "./components/profile/Profile";
 
 function App() {
   const [menuClick, setMenuClick] = useState<any>(false);
+  const navigate = useNavigate();
 
   const handleMenu = (e: React.MouseEvent<HTMLElement>) => {
     setMenuClick(!menuClick);
@@ -16,6 +17,7 @@ function App() {
   const handleSignOut = () => {
     localStorage.clear();
     setMenuClick(!menuClick);
+    navigate("/");
   };
   return (
     <div className="flex justify-center items-center h-[100vh]">

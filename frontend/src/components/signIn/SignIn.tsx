@@ -23,6 +23,9 @@ const SignIn = () => {
         .then((res) => {
           if (res.data.status === "Success") {
             localStorage.setItem("name", res.data.name);
+            localStorage.setItem("id", res.data.id);
+            localStorage.setItem("quote", res.data.quote);
+
             navigate("/");
           } else {
             console.log("No record exists", res);

@@ -28,14 +28,28 @@ app.post("/signin", (req, res) => {
   const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     let name = data[0].name;
+    let id = data[0].id;
+    let quote = data[0].quote;
     if (err) {
       return res.json("Error");
     }
     if (data.length > 0) {
-      return res.json({ status: "Success", name: name });
+      return res.json({ status: "Success", name: name, id: id, quote: quote });
     } else {
       return res.json("Fail");
     }
+  });
+});
+
+app.post("/profile", (req, res) => {
+  const sql = "UPDATE login SET `quote` = ? WHERE `id` = ?";
+  db.query(sql, [req.body.quote, req.body.id], (err, data) => {
+    if (err) {
+      console.log("er");
+      return res.json("Error");
+    }
+    console.log("send");
+    return res.json(data);
   });
 });
 
