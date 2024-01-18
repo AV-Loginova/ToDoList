@@ -27,7 +27,10 @@ const Window = () => {
   return (
     <div className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto">
       <Input key="input" addTodo={addTodo} />
-      <h1 className="text-center text-slate-700 mb-[20px]">ToBuy</h1>
+      <h1 className="text-center text-slate-700 mb-[20px]">
+        ToBuy{" "}
+        {localStorage.getItem("name") && ` for ${localStorage.getItem("name")}`}
+      </h1>
       <div>
         {todos.map((todo, index) => (
           <ToDo

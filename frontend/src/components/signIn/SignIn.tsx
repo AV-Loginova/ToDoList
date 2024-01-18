@@ -21,7 +21,8 @@ const SignIn = () => {
       axios
         .post("http://localhost:8081/signin", values)
         .then((res) => {
-          if (res.data === "Success") {
+          if (res.data.status === "Success") {
+            localStorage.setItem("name", res.data.name);
             navigate("/");
           } else {
             console.log("No record exists", res);
