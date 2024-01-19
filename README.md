@@ -11,4 +11,6 @@ Created gitignore file. After adding to the list text disappears from input. Che
 ## 27.12.2023
 Added function to delete existing todos. Modified the logic of adding todos, instead of adding data to a 'data' array, now data is written to a 'todos' array, which rewrites itself.
 ## 18.01.2023
-Added registration/authorization function. Were used: express, mysql.
+Added registration/authorization function. Were used: express, mysql. 
+Added the ability to edit quote in the profile. Quote is also added to db.
+
