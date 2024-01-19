@@ -19,6 +19,11 @@ function App() {
     setMenuClick(!menuClick);
     navigate("/");
   };
+
+  const handleHome = () => {
+    navigate("/");
+    setMenuClick(false);
+  };
   return (
     <div className="flex justify-center items-center h-[100vh]">
       <Routes>
@@ -33,6 +38,13 @@ function App() {
           color="grey"
           size={60}
           className="bg-[white] rounded-[50%] border-gray border-solid border-1 fixed top-[20px] right-[20px] shadow-md"
+        />
+      </button>
+      <button onClick={handleHome}>
+        <Icon.HouseFill
+          color="white"
+          size={60}
+          className="fixed top-[20px] left-[20px] shadow-md"
         />
       </button>
 

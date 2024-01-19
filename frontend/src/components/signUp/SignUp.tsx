@@ -21,6 +21,7 @@ const SignUp = () => {
       axios
         .post("http://localhost:8081/signup", values)
         .then((res) => {
+          console.log(res);
           navigate("/signIn");
         })
         .catch((err) => {
