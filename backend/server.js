@@ -60,7 +60,7 @@ app.post("/profile", (req, res) => {
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/shop", (req, res) => {
   const sql = "UPDATE login SET `tasks` = ? WHERE `id` = ?";
   db.query(sql, [req.body.tasks, req.body.id], (err, data) => {
     if (err) {

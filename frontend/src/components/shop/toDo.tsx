@@ -25,7 +25,7 @@ const ToDo = ({ task, deleteTodo, isChecked }: Props) => {
     <div className="flex justify-between gap-[5px]">
       <input
         type="checkbox"
-        className="form-check-input"
+        className="form-check-input ml-[10px]"
         checked={task.checked}
         onChange={handleChecked}
       ></input>

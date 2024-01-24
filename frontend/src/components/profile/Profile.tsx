@@ -38,7 +38,11 @@ function Profile() {
   };
 
   return (
-    <div className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto flex items-center flex-col">
+    <div
+      className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] 
+    shadow-md p-[20px] min-h-[50vh] overflow-auto flex items-center 
+    flex-col text-slate-700 z-1"
+    >
       <h1 className="text-center">Profile of {localStorage.getItem("name")}</h1>
       <div className="flex">
         <p className="italic">
@@ -59,6 +63,7 @@ function Profile() {
           type="text"
           onChange={handleInput}
           className="p-[6px] border-1 rounded-[5px]"
+          value={quote ? quote : ""}
         ></input>
         <button className="btn btn-primary" onClick={handleSubmit}>
           Edit

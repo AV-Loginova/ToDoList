@@ -10,23 +10,20 @@ type Data = {
   checked: boolean;
 };
 
-const Window = () => {
+const Shop = () => {
   const [todos, setTodos] = useState<Data[]>(
     JSON.parse(localStorage.getItem("tasks") as string)
       ? JSON.parse(localStorage.getItem("tasks") as string)
       : []
   );
-
   const [values, setValues] = useState({
     id: parseInt(localStorage.getItem("id") as string),
     tasks: localStorage.getItem("tasks"),
     count: parseInt(localStorage.getItem("count") as string),
   });
-  const [count, setCount] = useState(0);
 
   const addTodo = (todo: string) => {
     setTodos([...todos, { id: uuid(), task: todo, checked: false }]);
-    setCount(count + 1);
   };
 
   const deleteTodo = (id: string) => {
@@ -42,19 +39,22 @@ const Window = () => {
         return (todo.checked = val);
       }
     });
+    setTodos([...todos]);
   };
   return (
-    <div className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh]">
+    <div className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] z-1">
       <Input key="input" addTodo={addTodo} />
       <h1 className="text-center text-slate-700 mb-[20px]">
         ToBuy
         {localStorage.getItem("name") && ` for ${localStorage.getItem("name")}`}
       </h1>
-      <div className="h-[28vh] overflow-y-auto">
+      <div className="h-[25vh] overflow-y-auto">
         {todos.map((todo, index) => {
-          localStorage.setItem("tasks", JSON.stringify(todos));
+          localStorage.getItem("name") &&
+            localStorage.setItem("tasks", JSON.stringify(todos));
+
           axios
-            .post("http://localhost:8081/", values)
+            .post("http://localhost:8081/shop", values)
             .then((res) => {
               // console.log(res);
             })
@@ -75,4 +75,4 @@ const Window = () => {
   );
 };
 
-export default Window;
+export default Shop;
