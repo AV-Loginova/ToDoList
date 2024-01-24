@@ -30,11 +30,18 @@ app.post("/signin", (req, res) => {
     let name = data[0]?.name;
     let id = data[0]?.id;
     let quote = data[0]?.quote;
+    let tasks = data[0]?.tasks;
     if (err) {
       return res.json("Error");
     }
     if (data.length > 0) {
-      return res.json({ status: "Success", name: name, id: id, quote: quote });
+      return res.json({
+        status: "Success",
+        name: name,
+        id: id,
+        quote: quote,
+        tasks: tasks,
+      });
     } else {
       return res.json("Fail");
     }
@@ -49,6 +56,18 @@ app.post("/profile", (req, res) => {
       return res.json("Error");
     }
     console.log("send");
+    return res.json(data);
+  });
+});
+
+app.post("/", (req, res) => {
+  const sql = "UPDATE login SET `tasks` = ? WHERE `id` = ?";
+  db.query(sql, [req.body.tasks, req.body.id], (err, data) => {
+    if (err) {
+      console.log("errTask");
+      return res.json("Error");
+    }
+    console.log("sent");
     return res.json(data);
   });
 });

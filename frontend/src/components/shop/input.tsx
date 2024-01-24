@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 type Props = {
   addTodo: (todo: string) => void;
@@ -6,7 +7,6 @@ type Props = {
 
 export default function Input({ addTodo }: Props) {
   const [value, setValue] = useState("");
-
   function handleClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     addTodo(value);

@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import Delete from "../../assets/bin.png";
+import axios from "axios";
 
 type Props = {
   task: {
-    id: number;
+    id: string;
     task: string;
     checked: boolean;
   };
-  deleteTodo: (id: number) => void;
-  isChecked: any;
+  deleteTodo: (id: string) => void;
+  isChecked: (val: boolean, id: string) => void;
 };
 
 const ToDo = ({ task, deleteTodo, isChecked }: Props) => {
   const [checked, setChecked] = useState(task?.checked);
 
   function handleChecked() {
+    console.log(task.checked);
     isChecked(!checked, task.id);
     setChecked(!checked);
   }
@@ -32,7 +34,7 @@ const ToDo = ({ task, deleteTodo, isChecked }: Props) => {
       </p>
       <button className="">
         <img
-          className="w-[20px]"
+          className="w-[20px] mr-[15px]"
           src={Delete}
           alt="delete"
           onClick={() => deleteTodo(task.id)}

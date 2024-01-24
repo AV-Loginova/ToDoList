@@ -39,9 +39,7 @@ function Profile() {
 
   return (
     <div className="w-[90vw] bg-[#f0f8ff] lg:w-[40vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto flex items-center flex-col">
-      <h1 className="text-center">Profile</h1>
-      <div className="flex"></div>
-      <p className="text-[35px]">{localStorage.getItem("name")}</p>
+      <h1 className="text-center">Profile of {localStorage.getItem("name")}</h1>
       <div className="flex">
         <p className="italic">
           {quote === "null" || quote === "" ? "Your inspiring quote..." : quote}

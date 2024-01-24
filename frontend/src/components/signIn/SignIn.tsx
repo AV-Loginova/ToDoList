@@ -25,7 +25,7 @@ const SignIn = () => {
             localStorage.setItem("name", res.data.name);
             localStorage.setItem("id", res.data.id);
             localStorage.setItem("quote", res.data.quote);
-
+            localStorage.setItem("tasks", res.data.tasks);
             navigate("/");
           } else {
             console.log("No record exists", res);
