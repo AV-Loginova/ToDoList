@@ -10,7 +10,7 @@ import Home from "./components/home/home";
 
 function App() {
   return (
-    <div className="flex justify-center items-center h-[100vh]">
+    <div className="flex flex-col justify-center items-center h-[100vh]">
       <Navigation />
       <Routes>
         <Route path="/signIn" element={<SignIn />} />

@@ -14,7 +14,7 @@ const SignUp = () => {
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setValues((prev) => ({ ...prev, [e.target.name]: [e.target.value] }));
   }
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     setErrors(Validation(values));
     if (errors.name == "" && errors.email === "" && errors.password === "") {
@@ -31,7 +31,7 @@ const SignUp = () => {
   }
   return (
     <form
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
       className="w-[80vw] bg-[#f0f8ff] md:w-[30vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto flex flex-col gap-[10px]"
     >
       <h1 className="text-center">Sign Up</h1>
@@ -79,11 +79,15 @@ const SignUp = () => {
         )}
       </div>
       {/* SUBMIT */}
-      <button type="submit" className="btn btn-success w-full">
+      <button
+        type="submit"
+        className="btn btn-success w-full"
+        onClick={handleSubmit}
+      >
         Create Account
       </button>
       <p className="mb-0 text-center">or</p>
-      <Link to="/signin" className="btn btn-primary w-full">
+      <Link to="/signIn" className="btn btn-primary w-full">
         Log In
       </Link>
     </form>

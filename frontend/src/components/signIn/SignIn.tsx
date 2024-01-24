@@ -14,7 +14,7 @@ const SignIn = () => {
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setValues((prev) => ({ ...prev, [e.target.name]: [e.target.value] }));
   }
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     setErrors(Validation(values));
     if (errors.email === "" && errors.password === "") {
@@ -26,8 +26,10 @@ const SignIn = () => {
             localStorage.setItem("id", res.data.id);
             localStorage.setItem("quote", res.data.quote);
             localStorage.setItem("tasks", res.data.tasks);
+            alert("success");
             navigate("/");
           } else {
+            alert("error");
             console.log("No record exists", res);
           }
         })
@@ -38,8 +40,9 @@ const SignIn = () => {
   }
   return (
     <form
-      onSubmit={handleSubmit}
-      className="w-[80vw] bg-[#f0f8ff] lg:w-[30vw] rounded-[10px] shadow-md p-[20px] min-h-[50vh] overflow-auto flex flex-col gap-[10px]"
+      // onSubmit={handleSubmit}
+      className="w-[80vw] bg-[#f0f8ff] lg:w-[30vw] rounded-[10px] 
+      shadow-md p-[20px] min-h-[50vh] overflow-auto flex flex-col gap-[10px]"
     >
       <h1 className="text-center">Log In</h1>
       {/* EMAIL */}
@@ -73,11 +76,11 @@ const SignIn = () => {
       </div>
 
       {/* SUBMIT */}
-      <button type="submit" className="btn btn-success">
+      <button type="submit" className="btn btn-success" onClick={handleSubmit}>
         Log In
       </button>
       <p className="mb-0 text-center">or</p>
-      <Link to="/signup" className="btn btn-primary">
+      <Link to="/signUp" className="btn btn-primary">
         Create account
       </Link>
     </form>
